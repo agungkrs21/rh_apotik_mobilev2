@@ -39,10 +39,10 @@ const Dashboard = () => {
     }
   };
 
-  const fetchDetail = async () => {
+  const fetchDetail = async (id_pesanan) => {
     setLoading(true);
     try {
-      const resDetailPesanan = await fetch(`http://192.168.119.239:3000/api/pesanan/detail_pesanan/${selectedPesanan.id_pesanan}`);
+      const resDetailPesanan = await fetch(`http://192.168.119.239:3000/api/pesanan/detail_pesanan/${id_pesanan}`);
       const dataDetailPesanan = await resDetailPesanan.json();
       setSelectedDetail(dataDetailPesanan);
       console.log(dataDetailPesanan);
@@ -56,9 +56,9 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    fetchDetail();
-  }, [selectedPesanan]);
+  // useEffect(() => {
+  //   fetchDetail();
+  // }, [selectedPesanan]);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
@@ -173,6 +173,7 @@ const Dashboard = () => {
               onPress={() => {
                 setSelectedPesanan(item);
                 setModalVisible(true);
+                fetchDetail(item.id_pesanan);
               }}
             >
               <Text style={styles.cardTitle}>ID: {item.id_pesanan}</Text>
