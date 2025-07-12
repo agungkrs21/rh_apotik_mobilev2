@@ -57,7 +57,7 @@ const Produk = () => {
 
       {item.stok > 0 && (
         <TouchableOpacity style={styles.buyButton} onPress={() => navigation.navigate("pesanan", { produk: item })}>
-          <Text style={styles.buyText}>Beli Sekarang</Text>
+          <Text style={styles.buyText}>➕ Pesanan</Text>
         </TouchableOpacity>
       )}
     </TouchableOpacity>
@@ -68,7 +68,7 @@ const Produk = () => {
       {/* FILTER */}
       <View style={styles.filterRow}>
         <TextInput placeholder="🔍 Cari produk..." value={search} onChangeText={setSearch} style={styles.input} />
-        <TextInput placeholder="Kategori (opsional)" value={kategori} onChangeText={setKategori} style={styles.input} />
+        {/* <TextInput placeholder="Kategori (opsional)" value={kategori} onChangeText={setKategori} style={styles.input} /> */}
         <TouchableOpacity onPress={() => setHideOutOfStock(!hideOutOfStock)} style={styles.outStockToggle}>
           <Ionicons name={hideOutOfStock ? "eye-off" : "eye"} size={20} color="#333" />
           <Text style={{ marginLeft: 4 }}>Stok habis</Text>
@@ -95,7 +95,7 @@ const Produk = () => {
                 <Text>Stok: {selectedProduk.stok}</Text>
                 <Text style={styles.modalDeskripsi}>Deskripsi: {selectedProduk.deskripsi}</Text>
 
-                {selectedProduk.stok > 0 && <Button title="💳 Beli Sekarang" onPress={() => alert("Navigasi ke pesanan")} />}
+                {/* {selectedProduk.stok > 0 && <Button title="💳 Beli Sekarang" onPress={() => alert("Navigasi ke pesanan")} />} */}
 
                 <View style={{ marginTop: 10 }}>
                   <Button title="❌ Tutup" onPress={() => setModalVisible(false)} color="#999" />
@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     backgroundColor: "#f9fafb",
+    paddingTop: 20,
   },
   filterRow: {
     marginBottom: 10,

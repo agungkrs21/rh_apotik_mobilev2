@@ -110,6 +110,7 @@ const Pesanan = () => {
       Alert.alert("✅ Pesanan Dikirim", `${ringkasan}\nTotal: Rp ${totalBayar.toLocaleString()}`);
       setQrModalVisible(false);
       setBuktiBayar(null);
+      handleClear();
 
       return data;
     } catch (error) {

@@ -3,7 +3,6 @@ import { Tabs, useRouter } from "expo-router";
 import { useEffect } from "react";
 import { ActivityIndicator, SafeAreaView, StyleSheet, View } from "react-native";
 import { useAuth } from "../../context/AuthContext";
-import { CartProvider } from "../../context/CartContext";
 export default function TabLayout() {
   const { user, isLoading } = useAuth();
   const router = useRouter();
@@ -23,53 +22,51 @@ export default function TabLayout() {
   }
 
   return (
-    <CartProvider>
-      <SafeAreaView style={styles.safeArea}>
-        <Tabs
-          screenOptions={{
-            tabBarActiveTintColor: "#2c7be5",
-            tabBarLabelStyle: { fontSize: 12 },
-            headerShown: false,
+    <SafeAreaView style={styles.safeArea}>
+      <Tabs
+        screenOptions={{
+          tabBarActiveTintColor: "#2c7be5",
+          tabBarLabelStyle: { fontSize: 12 },
+          headerShown: false,
+        }}
+      >
+        <Tabs.Screen
+          name="dashboard"
+          options={{
+            title: "Dashboard",
+            tabBarIcon: ({ color, size }) => <Ionicons name="home-outline" color={color} size={size} />,
           }}
-        >
-          <Tabs.Screen
-            name="dashboard"
-            options={{
-              title: "Dashboard",
-              tabBarIcon: ({ color, size }) => <Ionicons name="home-outline" color={color} size={size} />,
-            }}
-          />
-          <Tabs.Screen
-            name="produk"
-            options={{
-              title: "Produk",
-              tabBarIcon: ({ color, size }) => <Ionicons name="pricetags-outline" color={color} size={size} />,
-            }}
-          />
-          <Tabs.Screen
-            name="pesanan"
-            options={{
-              title: "Pesanan",
-              tabBarIcon: ({ color, size }) => <Ionicons name="receipt-outline" color={color} size={size} />,
-            }}
-          />
-          <Tabs.Screen
-            name="konsultasi"
-            options={{
-              title: "Konsultasi",
-              tabBarIcon: ({ color, size }) => <Ionicons name="chatbox-outline" color={color} size={size} />,
-            }}
-          />
-          <Tabs.Screen
-            name="profil"
-            options={{
-              title: "Profil",
-              tabBarIcon: ({ color, size }) => <Ionicons name="person-outline" color={color} size={size} />,
-            }}
-          />
-        </Tabs>
-      </SafeAreaView>
-    </CartProvider>
+        />
+        <Tabs.Screen
+          name="produk"
+          options={{
+            title: "Produk",
+            tabBarIcon: ({ color, size }) => <Ionicons name="pricetags-outline" color={color} size={size} />,
+          }}
+        />
+        <Tabs.Screen
+          name="pesanan"
+          options={{
+            title: "Pesanan",
+            tabBarIcon: ({ color, size }) => <Ionicons name="receipt-outline" color={color} size={size} />,
+          }}
+        />
+        <Tabs.Screen
+          name="konsultasi"
+          options={{
+            title: "Konsultasi",
+            tabBarIcon: ({ color, size }) => <Ionicons name="chatbox-outline" color={color} size={size} />,
+          }}
+        />
+        <Tabs.Screen
+          name="profil"
+          options={{
+            title: "Profil",
+            tabBarIcon: ({ color, size }) => <Ionicons name="person-outline" color={color} size={size} />,
+          }}
+        />
+      </Tabs>
+    </SafeAreaView>
   );
 }
 

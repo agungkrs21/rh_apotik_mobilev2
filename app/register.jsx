@@ -9,8 +9,8 @@ export default function Register() {
     email: "",
     password: "",
     alamat: "",
-    jk: "",
-    tglLahir: "",
+    jenis_kelamin: "",
+    tanggal_lahir: "",
     peran: "pengguna",
   });
 
@@ -20,7 +20,7 @@ export default function Register() {
 
   const handleSubmit = async () => {
     try {
-      const res = await fetch("http://<API_URL_KAMU>/api/register", {
+      const res = await fetch("http://192.168.119.239:3000/api/signup?tbname=users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -44,8 +44,8 @@ export default function Register() {
       <TextInput placeholder="Email" style={styles.input} onChangeText={(v) => handleChange("email", v)} />
       <TextInput placeholder="Password" secureTextEntry style={styles.input} onChangeText={(v) => handleChange("password", v)} />
       <TextInput placeholder="Alamat" style={styles.input} onChangeText={(v) => handleChange("alamat", v)} />
-      <TextInput placeholder="Jenis Kelamin (Laki-laki/Perempuan)" style={styles.input} onChangeText={(v) => handleChange("jk", v)} />
-      <TextInput placeholder="Tanggal Lahir (YYYY-MM-DD)" style={styles.input} onChangeText={(v) => handleChange("tglLahir", v)} />
+      <TextInput placeholder="Jenis Kelamin (Laki-laki/Perempuan)" style={styles.input} onChangeText={(v) => handleChange("jenis_kelamin", v)} />
+      <TextInput placeholder="Tanggal Lahir (YYYY-MM-DD)" style={styles.input} onChangeText={(v) => handleChange("tanggal_lahir", v)} />
       <Button title="Daftar" onPress={handleSubmit} />
       <Text style={{ marginTop: 10 }} onPress={() => router.replace("/login")}>
         Sudah punya akun? Login di sini
