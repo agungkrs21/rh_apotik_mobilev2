@@ -45,7 +45,6 @@ const Dashboard = () => {
       const resDetailPesanan = await fetch(`http://192.168.119.239:3000/api/pesanan/detail_pesanan/${id_pesanan}`);
       const dataDetailPesanan = await resDetailPesanan.json();
       setSelectedDetail(dataDetailPesanan);
-      console.log(dataDetailPesanan);
     } catch (err) {
       console.error("Gagal fetch detail:", err);
     } finally {
