@@ -49,7 +49,7 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login Apotek</Text>
+      <Text style={styles.title}>Login Ratu Glow</Text>
 
       <TextInput style={styles.input} placeholder="Email" autoCapitalize="none" onChangeText={(text) => setEmail(text)} value={email} />
       <TextInput style={styles.input} placeholder="Password" secureTextEntry onChangeText={(text) => setPassword(text)} value={password} />

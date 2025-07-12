@@ -46,8 +46,8 @@ const Dashboard = () => {
       const dataDetailPesanan = await resDetailPesanan.json();
       setSelectedDetail(dataDetailPesanan);
       console.log(dataDetailPesanan);
-    } catch (error) {
-      onsole.error("Gagal fetch detail:", err);
+    } catch (err) {
+      console.error("Gagal fetch detail:", err);
     } finally {
       setLoading(false);
     }
