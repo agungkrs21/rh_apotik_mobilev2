@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "rh-apotik-mobile",
-    "slug": "rh-apotik-mobile",
+    "name": "Rahmat Ratu Glow",
+    "slug": "ratuglow",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/splash.png",
     "scheme": "rhapotikmobile",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -28,7 +28,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/splash.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"

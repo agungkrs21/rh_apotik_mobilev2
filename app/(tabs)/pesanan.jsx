@@ -187,8 +187,8 @@ const Pesanan = () => {
           <View style={styles.modalContainer}>
             <Text style={styles.modalTitle}>📸 Pembayaran</Text>
 
-            <Text>Scan QR untuk bayar:</Text>
-            <Image source={require("../../assets/images/icon.png")} style={styles.qrImage} />
+            <Text>Scan QR untuk bayar: Rp{totalBayar.toLocaleString()}</Text>
+            <Image source={require("../../assets/images/glow.png")} style={styles.qrImage} resizeMode="contain" />
 
             <TouchableOpacity style={styles.uploadBtn} onPress={pickImage}>
               <Text style={styles.uploadText}>📤 Unggah Bukti Bayar</Text>
@@ -346,7 +346,7 @@ const styles = StyleSheet.create({
   },
   qrImage: {
     width: 200,
-    height: 200,
+    height: 300,
     marginVertical: 10,
   },
   uploadBtn: {

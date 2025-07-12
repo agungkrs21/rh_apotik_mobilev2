@@ -2,7 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { ActivityIndicator, Button, FlatList, Image, Modal, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Button, FlatList, Image, Modal, RefreshControl, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 const Produk = () => {
   const [produk, setProduk] = useState([]);
@@ -13,7 +13,9 @@ const Produk = () => {
   const [loading, setLoading] = useState(true);
   const [selectedProduk, setSelectedProduk] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const navigation = useNavigation();
+
   const fetchProduk = async () => {
     try {
       const res = await axios.get("http://192.168.119.239:3000/api/produk");
@@ -29,6 +31,12 @@ const Produk = () => {
   useEffect(() => {
     fetchProduk();
   }, []);
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await fetchProduk();
+    setRefreshing(false);
+  };
 
   useEffect(() => {
     const filtered = produk.filter((item) => {
@@ -79,7 +87,14 @@ const Produk = () => {
       {loading ? (
         <ActivityIndicator size="large" color="#888" />
       ) : (
-        <FlatList data={filteredProduk} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} numColumns={2} contentContainerStyle={{ paddingBottom: 80 }} />
+        <FlatList
+          data={filteredProduk}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id.toString()}
+          numColumns={2}
+          contentContainerStyle={{ paddingBottom: 80 }}
+          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={["#2563eb"]} />}
+        />
       )}
 
       {/* MODAL DETAIL PRODUK */}
